@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Flask_Blog/about</title>
+    {% if title %}
+        <title>{{ title }}</title>
+    {% else %}
+        <title>Flask_Blog</title>
+    {% endif %}
 </head>
 <body>
 <h1>About Page</h1>

@@ -2,10 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Flask Blog</title>
+    {% if title %}
+        <title>{{ title }}</title>
+    {% else %}
+        <title>Flask_Blog</title>
+    {% endif %}
 
 </head>
 <body>
-<h1>Home Page</h1>
+    {% for post in posts %}
+        <h1>{{ post.Author }}</h1>
+        <p>{{ post.Content }}</p>
+        <p>{{ post.Posted }}</p>
+    {% endfor %}
 </body>
 </html>
