@@ -1,16 +1,19 @@
 from flask import Flask, render_template, url_for
+from forms import RegistrationForm, LoginForm
 app = Flask(__name__)
+
+app.config['SECRET_KEY'] = 'ea3b631e1d2ad4ea9ad1c900c4daeea8'
 
 posts = [
     {
-        'Author':'Prudvi Bilakanti',
-        'Content':'End to end machine learning flow',
-        'Posted':'3/21/2019'
+        'Author': 'Prudvi Bilakanti',
+        'Content': 'End to end machine learning flow',
+        'Posted': '3/21/2019'
     },
 {
-        'Author':'Rudra Shrihaan',
-        'Content':'End to end machine learning flow',
-        'Posted':'3/22/2019'
+        'Author': 'Rudra Shrihaan',
+        'Content': 'End to end machine learning flow',
+        'Posted': '3/22/2019'
     }
 ]
 
@@ -23,5 +26,15 @@ def hello():
 def about():
     return render_template('about.html',title='About')
 
-if __name__ == '__main__':
+@app.route("/register", methods=['GET','POST'])
+def register():
+    form = RegistrationForm()
+    return render_template('registration.html', title='Register', form=form)
+
+@app.route("/login")
+def login():
+    form = LoginForm()
+    return render_template('login.html', title='Login', form=form)
+
+if __name__  ==  '__main__':
     app.run(debug=True)
